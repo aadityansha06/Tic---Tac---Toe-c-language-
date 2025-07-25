@@ -79,6 +79,7 @@ int main(int argc, char const *argv[])
       }
       else{
                 printf("\nSee you later %s and %s\n",player1,player2);
+                getchar();
           exit(0);
       }
     
@@ -105,7 +106,9 @@ int main(int argc, char const *argv[])
           system("cls");
           goto label;
       }else{
+         
         printf("\nSee you later %s and %s\n",player1,player2);
+        getchar();
           exit(0);
       }
 
@@ -126,7 +129,9 @@ int main(int argc, char const *argv[])
           goto label;
       }
       else{
+     
         printf("\nSee you later %s and %s\n",player1,player2);
+             getchar();
           exit(0);
       }
 
@@ -328,44 +333,35 @@ for (int  i = 0; i < 9; i++)
 }
   
 
-// Intially check for side box for winning move 
+// check for center 
 
- if (  point[6]!='x' && point[6]!='0' )
+ if (  point[4]!='x' && point[4]!='0' )
        {
-            return 7;
-         }
-         else if ( point[8]!='x' && point[8]!='0')
-         {
-                 return 9;
-         }
-         
-         else if (point[2]!='x' && point[2]!='0' )
-         {
-                 return 3;
-         }
+            return 5;
+        }
 
- 
+// check for corner box 
+int corner[]={0,2,6,8};
+ for (int i = 0; i <4; i++)
+ {
+    int index = corner[i]; 
+    if ( point[index]!='x' && point[index]!='0'){
+          return index +1;
+    }
+ }
 
+ // check for side boxes
+ int side[]={1,3,5,7};
+ for (int i = 0; i <4; i++)
+ {
+    int index = side[i]; 
+    if ( point[index]!='x' && point[index]!='0'){
+          return index +1;
+    }
+ }
 
-
-// play the vaild move
-for (int  i = 0; i < 9; i++)
-{
-   if (point[i]!='x' && point[i]!='0') {
-      
-                return i + 1;
-
-
-   }
-      
-        
-       
-     // 
-     
-    
+ return 1;
 
 
 
-
-}
 }
