@@ -1,9 +1,11 @@
 #include<stdio.h>
+#include<string.h>
 #include<stdlib.h>
 char point[9] = {'1','2','3','4','5','6','7','8','9'};
 void display(){
    
 system("cls");
+ printf("\n\t\t*********TIC-TAC-TOE***********\n");
 printf("\n\n");
    printf("\n \t\t%c\t|\t%c\t|\t%c",point[0],point[1],point[2]);
    printf("\n\t\t------------------------------------");
@@ -19,22 +21,41 @@ printf("\n\n");
 int move(int choice,char player1[20],char player2[20]);
 
 int logic();
+int ai();
 
 int main(int argc, char const *argv[])
 {
     char player1[20],player2[20] , new;
-    int choice=0;
-     system("cls");
-    printf("Enter player 1 name (x):\t");
-    gets(player1);
+    int choice=0,opt;
+    display();
+    printf("\n 1.Play with Freind\n2.Play with A.I\n Choose the option '1' Or '2'");
+    scanf("%d",&opt);
+    if (opt==1)
+    {
+          system("cls");
+       printf("Enter player 1 name (x):\t");
+  scanf("%s",&player1);
        printf("Enter player 2 name  (0):\t");
-    gets(player2);
-   label:
-    system("cls");
-      
-      
-      printf("Choose who'll play first:\n '1' for %s and '2' for %s: \t ",player1,player2);
+   scanf("%s",&player2);
+    label:
+     system("cls");
+        printf("Choose who'll play first:\n '1' for %s and '2' for %s: \t ",player1,player2);
       scanf("%d",&choice);
+    }else{
+       printf("Enter player 1 name (x):\t");
+     scanf("%s",&player1);
+
+     strcpy(player2, "Ai");
+
+      choice =1;
+      printf("\n%s will play first\n",player1);
+
+    }
+    
+    
+      
+      
+   
        printf("\nEnter the box number to put 'x' or '0' \t\n ");
   int win = move(choice,player1,player2);
     if (win==1)
@@ -137,7 +158,18 @@ int move(int choice,char player1[20],char player2[20]){
       }else{
           
           printf("\n%s's trun : ",player2);
-           scanf("%d",&box);
+          if (strcmp(player2,"Ai")==0)
+          {
+          
+           
+            box= ai();
+
+          }
+          else{
+              scanf("%d",&box);
+            
+          }
+           
            if(point[box-1]=='x' || point[box-1]=='0' || box>9 || box<1)
             {
               printf("Invalid move :");
@@ -213,3 +245,97 @@ int logic(){
   
 
 };
+
+/*
+
+  there are 3 different loops for Ai ;1st to block opponent, 2nd to aquire  side box , 3rd for winnning move  ;  and last to play if any above condition are not  ture ; 
+
+  we have 3 diffent loop to check through each cell of board in each loop by putting '0' or 'x' if any of them satisy i.e returns 0 or 1
+  it wil first undo the board (i.e the move it playyed and then in return i+1 to the move() to show it played by thinking not by simulationg 
+  or sspecificly hti and trial )
+
+*/
+int ai(){
+ char temp ;
+ // Block the opponent 
+for (int  i = 0; i < 9; i++)
+{
+   if (point[i]!='x' && point[i]!='0') {
+      temp = point[i];
+        point[i]='x';
+        if(logic()==1) // check whether it the logic return 1 or not to block the player 
+        { 
+          point[i]=temp; // undo board
+                return i + 1;
+        } 
+
+        point[i]=temp;
+
+   }
+      
+        
+       
+     // 
+     
+    
+}
+
+// Intially check for side box for winning move 
+
+ if (  point[6]!='x' && point[6]!='0' )
+       {
+            return 7;
+         }
+         else if ( point[8]!='x' && point[8]!='0')
+         {
+                 return 9;
+         }
+         
+         else if (point[2]!='x' && point[2]!='0' )
+         {
+                 return 3;
+         }
+         // Play best possible winning move
+  for ( int i = 0; i <9; i++)
+  {
+    if (point[i]!='x' && point[i]!='0') // check valid move
+    {   
+    
+        temp = point[i];
+        point[i]='0';
+        if (logic()==0)   // check whether it the logic return 0 or not
+        { 
+          point[i]=temp;
+          
+          return i + 1;
+        }
+         point[i]=temp;
+    
+  }
+  
+}
+ 
+
+
+
+// play the vaild move
+for (int  i = 0; i < 9; i++)
+{
+   if (point[i]!='x' && point[i]!='0') {
+      
+                return i + 1;
+
+
+   }
+      
+        
+       
+     // 
+     
+    
+
+
+
+
+}
+}
