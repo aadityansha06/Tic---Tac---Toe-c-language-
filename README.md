@@ -1,60 +1,62 @@
-# Tic Tac Toe (C Language)
+# 🎮 Tic Tac Toe (C Language)
 
-A simple terminal-based Tic Tac Toe game built in C.
+A simple terminal-based Tic Tac Toe game written in C.
 
-## 🎮 Features
-- Two-player mode
-- Input validation
-- Display board in terminal
-- Option to play again after game ends
+---
+
+## ✨ Features
+
+- Player vs Player and Player vs AI mode
+- Input validation to prevent invalid moves
+- Simple terminal UI with live board updates
+- Option to replay after the match ends
+- AI logic that can block and win
 
 ---
 
 ## 📦 Download
 
-Download the latest `.exe` (for Windows) or `.out` binary (for Termux/Linux):
+Download the latest executable from the [Releases Page](https://github.com/aadityansha06/Tic---Tac---Toe-c-language-/releases).
 
-👉 [Releases Page](https://github.com/aadityansha06/Tic---Tac---Toe-c-language-/releases)
+**👉 Windows:** `game.exe`  
+**👉 Termux/Linux:** Compile from `game.c`
 
 ---
 
 ## 🪟 How to Run (on Windows)
 
 ### ✅ Steps:
-1. Go to the [Releases](https://github.com/aadityansha06/Tic---Tac---Toe-c-language-/releases) page.
-2. Download the `.exe` file (e.g., `tic-tac-toe.exe`).
-3. Double-click the file to run **OR** run from terminal:
 
-```bash
-cd path/to/download
-./tic-tac-toe.exe
-```
+1. Go to the [Releases Page](https://github.com/aadityansha06/Tic---Tac---Toe-c-language-/releases).
+2. Download the `game.exe` file.
+3. Run it by:
+   - Double-clicking the file, or
+   - Using the terminal:
+     ```bash
+     cd path/to/download
+     ./game.exe
+     ```
+
+📌 No installation required!
+
+---
+
+## 📱 How to Run on Termux (Android)
+
+### 🔧 Full Setup:
+
+1. **Install dependencies:**
+   ```bash
+   pkg update -y
+   pkg install clang git -y
+````2.**Compile the code:***
 
 
-📌 No installation needed if you're using the .exe from the release.
-
-# Termux full setup to run the Tic Tac Toe game
-
-# 1. Update and install compiler
-```bash
-pkg update -y
-pkg install clang git -y
+clang game.c -o game.out
 ````
-# 2. Clone the project
-```bash
-git clone https://github.com/aadityansha06/Tic---Tac---Toe-c-language-.git
-cd Tic---Tac---Toe-c-language-
-````
-# 3. Compile the C file
-```bash
-clang main.c -o tic-tac-toe.out
-```
-# 4. Run the game
-```bash
-./tic-tac-toe.out
-````
-📝 License
-This project is open source 
+`````bash
+./game.out
+`````
 
-✨ Author
-Developed by aadityansha06
+👨‍💻 Author
+Made with 💻 by aadityansha06
