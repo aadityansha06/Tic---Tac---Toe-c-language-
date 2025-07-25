@@ -1,11 +1,15 @@
 #include<stdio.h>
 #include<string.h>
+#include<windows.h>
 #include<stdlib.h>
+
+
 char point[9] = {'1','2','3','4','5','6','7','8','9'};
 void display(){
    
 system("cls");
  printf("\n\t\t*********TIC-TAC-TOE***********\n");
+ printf("\n\n\t\tEnter Box number to put 'x' or '0' ");
 printf("\n\n");
    printf("\n \t\t%c\t|\t%c\t|\t%c",point[0],point[1],point[2]);
    printf("\n\t\t------------------------------------");
@@ -80,7 +84,15 @@ int main(int argc, char const *argv[])
     
     }
     else if(win==0){ // 0 wins
-      printf("\n Congrats! %s Won the match",player2);
+      if (strcmp(player2,"Ai")==0)
+      {
+           printf("\n %s Won the match and  you lost %s\n",player2,player1);
+      }else{
+              printf("\n Congrats! %s Won the match",player2);
+
+      }
+      
+
     printf("\nDo you want to play agin 'y' Or 'n'  ");
       scanf(" %c",&new);
       if (new=='y'|| new == 'Y')
@@ -157,15 +169,19 @@ int move(int choice,char player1[20],char player2[20]){
 
       }else{
           
-          printf("\n%s's trun : ",player2);
+          
           if (strcmp(player2,"Ai")==0)
           {
           
            
             box= ai();
 
+            printf("\nAi played %d\n",box);
+            Sleep(1500);
+
           }
           else{
+            printf("\n%s's trun : ",player2);
               scanf("%d",&box);
             
           }
